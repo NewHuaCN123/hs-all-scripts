@@ -1,22 +1,25 @@
-"""  
-Created on Wed Aug 11 18:34:00 2022
 
-QGIS cheet sheet
+### Created on Wed Aug 11 18:34:00 2022
+### updated on Tue Sep 27 16:56:00 2022
 
 
-@author: Michael Getachew Tadesse
-"""
+# QGIS cheet sheet
+
+
+### @author: Michael Getachew Tadesse
+
 
 ## Using conditionals in QGIS
 #### modifying attributes
 
-case
+```case
 	when layer = 'sfwmd_wells_not_in_shp' then DBKEY
 	when layer = 'ukb_sf_GW_sites_sa_ufa_zshift_v3' then DBKEY
 	when layer = 'ukb_swf_wells_not_in_SHP' then SITE_ID
 	when layer = 'ukb_swf_sa_ufa' then SITE_ID
 	when layer = 'ukb_sjr_sa_int_ufa' then HYDRO_NO
 end 
+```
 
 
 
@@ -43,3 +46,7 @@ Make sure to add the nodata format - 9999
 ## to label only selected features in QGIS
 
 properties -> rendering -> show label -> edit -> modify using field calculator
+
+## extracting cross-sections from DEM
+### using the SAGA tool
+
