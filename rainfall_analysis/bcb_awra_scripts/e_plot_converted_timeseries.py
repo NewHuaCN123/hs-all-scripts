@@ -25,11 +25,12 @@ from sklearn.metrics import mean_squared_error
 yr = "2017"
 ###############
 
-
-dir_home = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
-        "NEXRAD_Gage_15min_comparison_correction_AWRA\\corrected_nexrad\\{}".format(yr)
-dir_out = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
-        "NEXRAD_Gage_15min_comparison_correction_AWRA\\corrected_nexrad\\figures\\{}".format(yr)
+dir_home = "D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\Hazen and Sawyer\\"\
+                "MIKE_Modeling_Group - Documents\\BCB\\data\\Rainfall\\"\
+                        "bk_nexrad_gage\\corrected_nexrad"
+dir_out = "D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\Hazen and Sawyer\\"\
+                "MIKE_Modeling_Group - Documents\\BCB\\data\\Rainfall\\"\
+                        "bk_nexrad_gage\\corrected_nexrad_figures"
 
 
 os.chdir(dir_home)
@@ -53,9 +54,9 @@ for gg in gageList:
     plt.figure(figsize = (10,6))
 
     dat['date'] = pd.to_datetime(dat['date'])
-    plt.plot(dat['date'], dat['nexrad'], marker = 'o', color="red", label="NEXRAD-Original", markersize = 5)
-    plt.plot(dat['date'], dat['gage'], marker = 'o', color="blue", label="Gage", markersize =4)
-    plt.plot(dat['date'], dat['corrected'], marker = 'o', color="green", label="NEXRAD-Corrected", markersize = 2)
+    plt.plot(dat['date'], dat['nexrad'], 'o', color="red", label="NEXRAD-Original", markersize = 5)
+    plt.plot(dat['date'], dat['corrected'], color="green", label="NEXRAD-Corrected", markersize = 2)
+    plt.plot(dat['date'], dat['gage'], 'o', color="blue", label="Gage", markersize =3.2)
     plt.grid()
     plt.legend()
 

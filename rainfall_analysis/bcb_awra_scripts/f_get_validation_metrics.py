@@ -21,10 +21,12 @@ yr = "2017"
 ###############
 
 
-dir_home = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
-        "NEXRAD_Gage_15min_comparison_correction_AWRA\\corrected_nexrad\\{}".format(yr)
-dir_out = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
-        "NEXRAD_Gage_15min_comparison_correction_AWRA\\corrected_nexrad"
+dir_home = "D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\Hazen and Sawyer\\"\
+                "MIKE_Modeling_Group - Documents\\BCB\\data\\Rainfall\\"\
+                        "bk_nexrad_gage\\corrected_nexrad"
+dir_out = "D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\Hazen and Sawyer\\"\
+                "MIKE_Modeling_Group - Documents\\BCB\\data\\Rainfall\\"\
+                        "bk_nexrad_gage"
 
 
 os.chdir(dir_home)
@@ -72,4 +74,4 @@ print(df)
 
 os.chdir(dir_out)
 
-df.to_csv("validation_metrics_{}.csv".format(yr))
+df.to_csv("validation_metrics.csv")

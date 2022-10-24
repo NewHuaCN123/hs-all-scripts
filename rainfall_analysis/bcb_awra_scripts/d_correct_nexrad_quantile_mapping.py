@@ -20,16 +20,15 @@ import matplotlib.pyplot as plt
 from distfit import distfit
 from sklearn.metrics import mean_squared_error
 
-###############
-# set year here
-yr = "2017"
-###############
 
 
-dir_home = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
-        "NEXRAD_Gage_15min_comparison_correction_AWRA\\nexrad_gage_merged\\{}".format(yr)
-dir_out = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
-        "NEXRAD_Gage_15min_comparison_correction_AWRA\\corrected_nexrad\\{}".format(yr)
+
+dir_home = "D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\Hazen and Sawyer\\"\
+                "MIKE_Modeling_Group - Documents\\BCB\\data\\Rainfall\\"\
+                        "bk_nexrad_gage\\nexrad_gage_merged"
+dir_out = "D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\Hazen and Sawyer\\"\
+                "MIKE_Modeling_Group - Documents\\BCB\\data\\Rainfall\\"\
+                        "bk_nexrad_gage\\corrected_nexrad"
 
 os.chdir(dir_home)
 
@@ -144,4 +143,4 @@ for gg in gageList:
         
 
     os.chdir(dir_out)
-    dat.to_csv(gg + "_corrected.csv")
+    dat.to_csv(gg.split(".csv")[0] + "_corrected.csv")
