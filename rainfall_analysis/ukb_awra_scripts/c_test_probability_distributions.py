@@ -34,7 +34,9 @@ dir_out = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
 
 os.chdir(dir_home)
 
-dat = pd.read_csv('IW783_10104658.csv')
+gage = 'IW783_10104658.csv'
+
+dat = pd.read_csv(gage)
 
 # replace NaN values with zeros
 dat['nexrad'] = dat['nexrad'].fillna(0)
@@ -114,18 +116,23 @@ def pdf_cdf_plots():
     # axs[0].grid()
     # axs[0].legend()
 
+
     dat['date'] = pd.to_datetime(dat['date'])
     axs[0].plot(dat['date'], dat['gage'], color="blue", label="Gage")
     axs[0].plot(dat['date'], dat['nexrad'], color="red", label="NEXRAD")
     axs[0].grid()
+    axs[0].set_ylabel('15 min Rainfall Depth [in]')
     axs[0].legend()
 
     axs[1].plot(bins_gage[1:], cdf_gage, label="Gage-CDF", color = "blue")
     axs[1].plot(bins_nex[1:], cdf_nex, label="Nex-CDF", color = "red")
     axs[1].grid()
+    axs[1].set_ylabel('Probability')
     axs[1].legend()
 
-    # plt.show()
+    axs[0].set_title(gage.split('.csv')[0])
+
+    plt.show()
 
     return gage_cdf_df, nex_cdf_df
 
@@ -133,49 +140,49 @@ def pdf_cdf_plots():
 pdf_cdf_plots()
 
 
-gage_cdf_df, nex_cdf_df = pdf_cdf_plots()
+# gage_cdf_df, nex_cdf_df = pdf_cdf_plots()
 
-dat['corrected'] = 'x'
+# dat['corrected'] = 'x'
 
-# print(np.interp(0.9998, gage_cdf_df['perc'], gage_cdf_df['gage']))
-
-
-for nn in range(len(dat['nexrad'])):
-    nex_value = dat['nexrad'][nn]
-
-    # get the corresponding nexrad percentile (from the CDF)
-    nex_perc = nex_cdf_df[nex_cdf_df['nex'] == nex_value]['perc'].values
+# # print(np.interp(0.9998, gage_cdf_df['perc'], gage_cdf_df['gage']))
 
 
-    # if the nex_perc doesn't exist
-    if len(nex_perc ) == 0:
-        nex_perc = np.interp(nex_value, nex_cdf_df['nex'], nex_cdf_df['perc'])
-    else:
-        nex_perc = nex_perc[0]
+# for nn in range(len(dat['nexrad'])):
+#     nex_value = dat['nexrad'][nn]
 
-    # print(nex_value, nex_perc)
+#     # get the corresponding nexrad percentile (from the CDF)
+#     nex_perc = nex_cdf_df[nex_cdf_df['nex'] == nex_value]['perc'].values
+
+
+#     # if the nex_perc doesn't exist
+#     if len(nex_perc ) == 0:
+#         nex_perc = np.interp(nex_value, nex_cdf_df['nex'], nex_cdf_df['perc'])
+#     else:
+#         nex_perc = nex_perc[0]
+
+#     # print(nex_value, nex_perc)
     
 
-    new_df = gage_cdf_df[gage_cdf_df['perc'] == nex_perc]
+#     new_df = gage_cdf_df[gage_cdf_df['perc'] == nex_perc]
 
-    if (new_df.empty):
-        print("es gibt ein Problem!")
+#     if (new_df.empty):
+#         print("es gibt ein Problem!")
 
-        nex_corrected = np.interp(nex_perc, gage_cdf_df['perc'], gage_cdf_df['gage'])
-        print(nex_corrected)
+#         nex_corrected = np.interp(nex_perc, gage_cdf_df['perc'], gage_cdf_df['gage'])
+#         print(nex_corrected)
 
-        dat['corrected'][nn] = nex_corrected
+#         dat['corrected'][nn] = nex_corrected
 
-    # if there is a number of gage values with the same percentile
-    # take the average of those
-    elif (len(new_df['gage']) > 1):
-        nex_corrected = new_df['gage'].mean()
+#     # if there is a number of gage values with the same percentile
+#     # take the average of those
+#     elif (len(new_df['gage']) > 1):
+#         nex_corrected = new_df['gage'].mean()
 
-        print(nex_corrected)
+#         print(nex_corrected)
 
-        dat['corrected'][nn] = nex_corrected
+#         dat['corrected'][nn] = nex_corrected
     
     
 
-os.chdir(dir_out)
-dat.to_csv("check_correction.csv")
+# os.chdir(dir_out)
+# dat.to_csv("check_correction.csv")

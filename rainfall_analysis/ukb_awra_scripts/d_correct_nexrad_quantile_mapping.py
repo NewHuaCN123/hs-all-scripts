@@ -77,6 +77,11 @@ for gg in gageList:
         nex_cdf_df = pd.DataFrame([bins_nex, cdf_nex]).T
         nex_cdf_df.columns = ['nex', 'perc']
 
+        # add perturbation to the last CDF
+        # this is to assign CDF to the maximum value
+        nex_cdf_df['perc'][len(nex_cdf_df) - 1] = 1 - (1e-25)
+        gage_cdf_df['perc'][len(gage_cdf_df) - 1] = 1 - (1e-25)
+
 
         return gage_cdf_df, nex_cdf_df
 
@@ -92,6 +97,15 @@ for gg in gageList:
 
     for nn in range(len(dat['nexrad'])):
         nex_value = dat['nexrad'][nn]
+        gage_value = dat['gage'][nn]
+
+        # check if both nexrad and gages are reporting zero rainfall
+        # in which case apply no correction
+
+        if ((nex_value == 0) & (gage_value == 0)):
+            dat['nex_perc'][nn] = 'zero'
+            dat['corrected'][nn] = 0
+            continue
 
         # get the corresponding nexrad percentile (from the CDF)
         nex_perc = nex_cdf_df[nex_cdf_df['nex'] == nex_value]['perc'].values
@@ -109,22 +123,22 @@ for gg in gageList:
         new_df = gage_cdf_df[gage_cdf_df['perc'] == nex_perc]
 
         if (new_df.empty):
-            print("es gibt ein Problem!")
+            # print("es gibt ein Problem!")
 
             nex_corrected = np.interp(nex_perc, gage_cdf_df['perc'], gage_cdf_df['gage'])
             print(nex_corrected)
 
-            dat['nex_perc'] = nex_perc
+            dat['nex_perc'][nn] = nex_perc
             dat['corrected'][nn] = nex_corrected
 
         # if there is a number of gage values with the same percentile
         # take the average of those
-        elif (len(new_df['gage']) > 1):
+        elif (len(new_df['gage']) >= 1):
             nex_corrected = new_df['gage'].mean()
 
             print(nex_corrected)
 
-            dat['nex_perc'] = nex_perc
+            dat['nex_perc'][nn] = nex_perc
             dat['corrected'][nn] = nex_corrected
         
         
