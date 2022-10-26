@@ -32,7 +32,7 @@ dt = "2017-09-10 10:30:00"
 
 dir_home = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
                 "NEXRAD_Gage_15min_comparison_correction_AWRA\\"\
-                            "gage_interpolated_pixels\\{}".format(yr)
+                            "nexrad_corrected_with_interpolated_gage\\{}".format(yr)
 
 dir_out = "R:\\40715-013 UKFPLOS\\Data\\Rainfall\\"\
                 "NEXRAD_Gage_15min_comparison_correction_AWRA\\"\
@@ -49,14 +49,17 @@ for pp in pList:
     dat = pd.read_csv(pp)
     # print(dat)
 
-    df = dat[dat['date'] == dt]
+    df = dat[dat['datetime'] == dt]
     df.reset_index(inplace = True)
     # print(df)
 
     # print(pp.split('.csv')[0])
 
-    new_df = pd.DataFrame([pp.split('.csv')[0], df['value'].values[0]]).T
-    new_df.columns = ['pixel', 'value']
+
+    # use 'value' for original nex values
+    # use 'corrected' for corrected nex values
+    new_df = pd.DataFrame([pp.split('_corrected.csv')[0], df['corrected'].values[0]]).T
+    new_df.columns = ['pixel', 'corrected']
 
     if isFirst:
         df_final = new_df
@@ -68,5 +71,5 @@ print(df_final)
 
 
 os.chdir(dir_out)
-df_final.to_csv("interp_201709101030.csv")
+df_final.to_csv("nex_corrected_201709101030.csv")
 
