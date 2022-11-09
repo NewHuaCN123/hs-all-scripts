@@ -1,9 +1,7 @@
-
 """  
 Created on Mon Aug 22 16:34:00 2022
 
 plot time series - convert date to month while plotting
-*mdates
 
 plotting joint distributions
 
