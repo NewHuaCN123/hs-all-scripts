@@ -22,7 +22,7 @@ sns.set_context('notebook', font_scale = 1.5)
 
 os.chdir("D:\\MIKE_Modeling_Files\\Hazen and Sawyer\\"\
                 "Hazen and Sawyer\\MIKE_Modeling_Group - Documents\\"\
-                        "BrowardRes\\scenarios_joint_probability\\waterLevel_comparison\\longer_comparison")
+                        "BrowardRes\\scenarios_joint_probability\\virginia_key_data")
 
 everg = pd.read_csv('South_Port_Everglades.csv')[['Date Time', ' Water Level']]
 everg['Date Time'] = pd.to_datetime(everg['Date Time'])
