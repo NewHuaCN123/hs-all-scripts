@@ -32,21 +32,31 @@ surge = pd.read_csv('virginia_keys_dmax_surge.csv')
 surge['date'] = pd.to_datetime(surge['date'])
 print(surge)
 
-rain = pd.read_csv('vn239_daily_rainfall.csv')
+rain = pd.read_csv('G54_rainfall.csv')
 rain['date'] = pd.to_datetime(rain['date'])
 print(rain)
 
 
 # merge rain and surge data
 dat_merged = pd.merge(surge, rain, on='date', how='inner')
-dat_merged = dat_merged[['date', 'value', 'max_surge']]
+dat_merged = dat_merged[['date', 'rain_in', 'max_surge']]
 dat_merged.columns = ['date', 'rain_in', 'surge_m']
 print(dat_merged)
 
+# # plot
+# sns.set()
+# plt.figure(figsize = (12,6))
+# plt.plot(surge['date'], surge['max_surge'], color = 'black')
+# plt.ylabel('Daily Maximum Surge [m]')
+# plt.grid()
+# plt.show()
+
+
 
 # # plot
+# sns.set()
 # plt.figure(figsize = (10,6))
-# plt.scatter(dat_merged['rain_in'], dat_merged['surge_m'])
+# # plt.scatter(dat_merged['rain_in'], dat_merged['surge_m'])
 # plt.xlabel('Daily Rainfall [in]')
 # plt.ylabel('Daily Max Surge [m]')
 # plt.grid()
