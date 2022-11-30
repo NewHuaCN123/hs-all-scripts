@@ -9,6 +9,7 @@ plot rainfall and surge data for Virginia Keys
 
 import pandas as pd
 import os
+import numpy as np
 import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -36,16 +37,16 @@ print(surge)
 dat_merged = pd.merge(rain, surge, on='date', how='inner')
 dat_merged = dat_merged[['date', 'value', 'agg_3d', 'max_surge']]
 dat_merged.columns = ['date', 'rain_in', 'rain_agg_3d', 'surge_m']
-# dat_merged = dat_merged[~dat_merged['rain_agg_3d'].isna()]
+dat_merged = dat_merged[~dat_merged['rain_agg_3d'].isna()]
 print(dat_merged)
 
 
-sns.set()
-sns.jointplot(dat_merged['rain_agg_3d'], dat_merged['surge_m'], kind = 'kde', color = 'red').plot_joint(sns.scatterplot)
-plt.show()
+# sns.set()
+# sns.jointplot(dat_merged['rain_agg_3d'], dat_merged['surge_m'], kind = 'kde', color = 'red').plot_joint(sns.scatterplot)
+# plt.show()
 
-sns.jointplot(dat_merged['rain_in'], dat_merged['surge_m'], kind = 'kde', color = 'red').plot_joint(sns.scatterplot)
-plt.show()
+# sns.jointplot(dat_merged['rain_in'], dat_merged['surge_m'], kind = 'kde', color = 'red').plot_joint(sns.scatterplot)
+# plt.show()
 
 def plotIt():
     plt.figure(figsize = (12,5))
@@ -73,3 +74,18 @@ print(len(dat_merged[(dat_merged['rain_agg_3d'] > 2.5) & (dat_merged['rain_agg_3
 
 print(len(dat_merged[(dat_merged['rain_agg_3d'] > 5.0) & (dat_merged['surge_m'] > 0)]))
 
+r_count, r_bins = np.histogram(dat_merged['rain_agg_3d'], bins=100)
+r_pdf = r_count / sum(r_count)
+r_cdf = np.cumsum(r_pdf)
+
+s_count, s_bins = np.histogram(dat_merged['surge_m'], bins=100)
+s_pdf = s_count / sum(s_count)
+s_cdf = np.cumsum(s_pdf)
+
+
+sns.set()
+plt.figure(figsize = (12,6))
+plt.plot(r_bins[1:], r_cdf, label="CDF-rain", color = 'blue', lw = 2)
+plt.plot(s_bins[1:], s_cdf, label="CDF-surge", color = 'red', lw = 2)
+plt.legend()
+plt.show()
