@@ -46,7 +46,7 @@ for bb in brn:
         file.write("corks_transect\n")
 
         # branch
-        file.write("EsteroS\n")
+        file.write("{}\n".format(bb))
 
         # chainage
         file.write("           " + jj.astype(str) + "\n")
