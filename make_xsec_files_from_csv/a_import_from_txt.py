@@ -12,9 +12,10 @@ import os
 import pandas as pd
 
 
-os.chdir('R:\\40715-010\\GIS\\corkscrew_transects')
+os.chdir('R:\\40715-013 UKFPLOS\\Data\\SFWMD_2023_bed_mapping\\raw_data')
 
-dat = pd.read_csv('cross_sections_qced.csv')
+# change cross-section file here
+dat = pd.read_csv('cross_sections_qced_v2.csv')
 
 # get unique branch names
 brn = dat['branch'].unique()
@@ -43,7 +44,7 @@ for bb in brn:
 
 
         # topoID
-        file.write("corks_transect\n")
+        file.write("ukb_transect\n")
 
         # branch
         file.write("{}\n".format(bb))
@@ -67,7 +68,7 @@ for bb in brn:
         file.write("DIVIDE X-Section\n")
         file.write("    0\n")
         file.write("SECTION ID\n")
-        file.write("    Corkscrew_Transect\n")
+        file.write("    sgu_bathymetry\n")
         file.write("INTERPOLATED\n")
         file.write("    0\n")
         file.write("ANGLE\n")
