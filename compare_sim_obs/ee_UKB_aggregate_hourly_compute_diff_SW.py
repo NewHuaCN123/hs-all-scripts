@@ -16,7 +16,7 @@ out_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\
 
 os.chdir(obs_dir)
 
-station = "g113"
+station = "s58"
 obs = pd.read_csv('{}.csv'.format(station))
 # print(obs)
 obs['datetime'] = pd.to_datetime(obs['datetime'])
@@ -24,18 +24,30 @@ obs['datetime'] = pd.to_datetime(obs['datetime'])
 print(obs)
 
 os.chdir(sim_dir)
-sim = pd.read_csv('cal_500D_DetailedTS.csv')
+sim = pd.read_csv('val_500G_DetailedTS.csv')
 sim['datetime'] = pd.to_datetime(sim['datetime'])
 
 
 # # consider only data past '2017-09-10'
 # # but for short period analysis do 09/10 - 09/18
-sim = sim[(sim['datetime'] >= '2017-09-10') & (sim['datetime'] <= '2017-10-10')]
+
+## Cal - Long Run
+# sim = sim[(sim['datetime'] >= '2017-09-10') & (sim['datetime'] <= '2017-10-10')]
+
+# ## Val - Long Run
+# sim = sim[(sim['datetime'] >= '2011-09-29') & (sim['datetime'] <= '2011-10-27')]
+
+# # Cal - Storm Event Period
+# sim = sim[(sim['datetime'] >= '2017-09-10') & (sim['datetime'] <= '2017-09-18')]
+
+## Val - Storm Event Period
+sim = sim[(sim['datetime'] >= '2011-10-03') & (sim['datetime'] <= '2011-10-27')]
+
 sim = sim[['datetime', station + "_sim"]]
 print(sim)
 
 # convert CMS to CFS
-sim[station + "_sim"] = sim[station + "_sim"]*35.314666212661
+# sim[station + "_sim"] = sim[station + "_sim"]*35.314666212661
 print(sim)
 
 obs.set_index(obs['datetime'], inplace = True)
@@ -58,13 +70,11 @@ print(dat_merged)
 
 # calculate calibration target
 dat_merged.columns = ['datetime', 'sim', 'obs']
-dat_merged['good_criteria'] = (dat_merged['sim'] >= 0.85*dat_merged['obs']) & (dat_merged['sim'] <= 1.15*dat_merged['obs']) 
-dat_merged['acceptable_criteria'] = (dat_merged['sim'] >= 0.70*dat_merged['obs']) & (dat_merged['sim'] <= 1.30*dat_merged['obs']) 
+dat_merged['good_criteria'] = (dat_merged['sim'] >= 0.80*dat_merged['obs']) & (dat_merged['sim'] <= 1.2*dat_merged['obs']) 
 
 
 # count TRUE 
 dat_merged['good_perc'] = len(dat_merged[dat_merged['good_criteria'] == True])/len(dat_merged)
-dat_merged['acc_perc'] = len(dat_merged[dat_merged['acceptable_criteria'] == True])/len(dat_merged)
 print(dat_merged)
 
 
