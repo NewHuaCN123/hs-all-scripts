@@ -5,18 +5,17 @@ import pandas as pd
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from scipy.stats import pearsonr 
-import hydroeval as he
 import matplotlib.pyplot as plt
 
 
-obs_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\flow_stats\\obs_flows'
-sim_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\flow_stats\\sim_flows'
-out_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\flow_stats\\merged_flow'
+obs_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\obs_flows'
+sim_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\sim_flows\\0530'
+out_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\merged\\0530'
 
 
 os.chdir(obs_dir)
 
-station = "g113"
+station = "mil3"
 obs = pd.read_csv('{}.csv'.format(station))
 # print(obs)
 obs['datetime'] = pd.to_datetime(obs['datetime'])
@@ -24,18 +23,18 @@ obs['datetime'] = pd.to_datetime(obs['datetime'])
 print(obs)
 
 os.chdir(sim_dir)
-sim = pd.read_csv('cal_500D_DetailedTS.csv')
+sim = pd.read_csv('detailedM11_TS_0530.csv')
 sim['datetime'] = pd.to_datetime(sim['datetime'])
 
 
 # # consider only data past '2017-09-10'
 # # but for short period analysis do 09/10 - 09/18
-sim = sim[(sim['datetime'] >= '2017-09-10') & (sim['datetime'] <= '2017-10-10')]
+sim = sim[(sim['datetime'] >= '2017-07-01') & (sim['datetime'] <= '2020-12-31')]
 sim = sim[['datetime', station + "_sim"]]
 print(sim)
 
 # convert CMS to CFS
-sim[station + "_sim"] = sim[station + "_sim"]*35.314666212661
+sim[station + "_sim"] = sim[station + "_sim"]
 print(sim)
 
 obs.set_index(obs['datetime'], inplace = True)

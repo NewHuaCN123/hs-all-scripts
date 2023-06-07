@@ -19,7 +19,7 @@ from os import fdopen, remove
 from tempfile import mkstemp
 
 
-dir_home = "D:\\2017_ascii"
+dir_home = "D:\just_ascii"
 
 os.chdir(dir_home)
 

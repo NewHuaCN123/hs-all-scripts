@@ -53,9 +53,9 @@ for gg in gageList:
     plt.figure(figsize = (10,6))
 
     dat['date'] = pd.to_datetime(dat['date'])
-    plt.plot(dat['date'], dat['nexrad'], marker = 'o', color="red", label="NEXRAD-Original", markersize = 5)
-    plt.plot(dat['date'], dat['gage'], marker = 'o', color="blue", label="Gage", markersize =4)
-    plt.plot(dat['date'], dat['corrected'], marker = 'o', color="green", label="NEXRAD-Corrected", markersize = 2)
+    plt.plot(dat['date'], dat['nexrad'], 'o', color="red", label="NEXRAD-Original", markersize = 5)
+    plt.plot(dat['date'], dat['corrected'], color="green", label="NEXRAD-Corrected", markersize = 2)
+    plt.plot(dat['date'], dat['gage'], 'o', color="blue", label="Gage", markersize =3.2)
     plt.grid()
     plt.legend()
 

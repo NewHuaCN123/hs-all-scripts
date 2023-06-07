@@ -15,7 +15,7 @@ import pandas as pd
 os.chdir('R:\\40715-013 UKFPLOS\\Data\\SFWMD_2023_bed_mapping\\raw_data')
 
 # change cross-section file here
-dat = pd.read_csv('cross_sections_qced_v2.csv')
+dat = pd.read_csv('cross_sections_qced_v3_2011.csv')
 
 # get unique branch names
 brn = dat['branch'].unique()

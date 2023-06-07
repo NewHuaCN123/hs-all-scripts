@@ -19,8 +19,8 @@ from os import fdopen, remove
 from tempfile import mkstemp
 
 
-dir_home = "D:\\2017_ascii"
-template_dir = "D:\\ascii_templates_2017"
+dir_home = "R:\\40715-013 UKFPLOS\\Data\\GW\\init_cond_boundary_files\\updated_intp_rasters\\2017\\sas\\ascii"
+template_dir = "R:\\40715-013 UKFPLOS\\Data\\GW\\init_cond_boundary_files\\updated_intp_rasters\\2017\\sas\\ascii_templates"
 
 
 os.chdir(dir_home)

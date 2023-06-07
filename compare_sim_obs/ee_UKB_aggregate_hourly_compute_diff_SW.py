@@ -4,19 +4,22 @@ import os
 import pandas as pd
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
-from scipy.stats import pearsonr 
-import hydroeval as he
-import matplotlib.pyplot as plt
+# from scipy.stats import pearsonr 
+# import hydroeval as he
+# import matplotlib.pyplot as plt
 
 
-obs_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\flow_stats\\obs_flows'
-sim_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\flow_stats\\sim_flows'
-out_dir = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\flow_stats\\merged_flow'
+obs_dir = "R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
+                    "cal_0606\\flow_stats\\obs_flows"
+sim_dir = "R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
+                    "cal_0606\\flow_stats\\sim_flows"
+out_dir = "R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
+                    "cal_0606\\flow_stats\\merged_flow"
 
 
 os.chdir(obs_dir)
 
-station = "s58"
+station = "kub001"
 obs = pd.read_csv('{}.csv'.format(station))
 # print(obs)
 obs['datetime'] = pd.to_datetime(obs['datetime'])
@@ -24,7 +27,7 @@ obs['datetime'] = pd.to_datetime(obs['datetime'])
 print(obs)
 
 os.chdir(sim_dir)
-sim = pd.read_csv('val_500G_DetailedTS.csv')
+sim = pd.read_csv('Cal_0606DetailedTS_M11.csv')
 sim['datetime'] = pd.to_datetime(sim['datetime'])
 
 
@@ -38,16 +41,16 @@ sim['datetime'] = pd.to_datetime(sim['datetime'])
 # sim = sim[(sim['datetime'] >= '2011-09-29') & (sim['datetime'] <= '2011-10-27')]
 
 # # Cal - Storm Event Period
-# sim = sim[(sim['datetime'] >= '2017-09-10') & (sim['datetime'] <= '2017-09-18')]
+sim = sim[(sim['datetime'] >= '2017-09-10') & (sim['datetime'] <= '2017-09-18')]
 
 ## Val - Storm Event Period
-sim = sim[(sim['datetime'] >= '2011-10-03') & (sim['datetime'] <= '2011-10-27')]
+# sim = sim[(sim['datetime'] >= '2011-10-03') & (sim['datetime'] <= '2011-10-27')]
 
 sim = sim[['datetime', station + "_sim"]]
 print(sim)
 
 # convert CMS to CFS
-# sim[station + "_sim"] = sim[station + "_sim"]*35.314666212661
+sim[station + "_sim"] = sim[station + "_sim"]*35.314666212661
 print(sim)
 
 obs.set_index(obs['datetime'], inplace = True)
