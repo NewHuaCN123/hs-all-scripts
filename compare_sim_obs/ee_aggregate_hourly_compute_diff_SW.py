@@ -9,13 +9,13 @@ import matplotlib.pyplot as plt
 
 
 obs_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\obs_flows'
-sim_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\sim_flows\\0530'
-out_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\merged\\0530'
+sim_dir = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0720\\flow_stats'
+out_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\merged\\0620'
 
 
 os.chdir(obs_dir)
 
-station = "mil3"
+station = "fu6"
 obs = pd.read_csv('{}.csv'.format(station))
 # print(obs)
 obs['datetime'] = pd.to_datetime(obs['datetime'])
@@ -23,7 +23,7 @@ obs['datetime'] = pd.to_datetime(obs['datetime'])
 print(obs)
 
 os.chdir(sim_dir)
-sim = pd.read_csv('detailedM11_TS_0530.csv')
+sim = pd.read_csv('BCB_071123_PD_FC9_noQimp_newstnsDetailedTS_M11 - Copy.csv')
 sim['datetime'] = pd.to_datetime(sim['datetime'])
 
 
@@ -65,7 +65,6 @@ dat_merged['acceptable_criteria'] = (dat_merged['sim'] >= 0.70*dat_merged['obs']
 dat_merged['good_perc'] = len(dat_merged[dat_merged['good_criteria'] == True])/len(dat_merged)
 dat_merged['acc_perc'] = len(dat_merged[dat_merged['acceptable_criteria'] == True])/len(dat_merged)
 print(dat_merged)
-
 
 
 # # # calculate stats

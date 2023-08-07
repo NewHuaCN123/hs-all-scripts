@@ -10,11 +10,11 @@ from sklearn.metrics import mean_absolute_error
 
 
 obs_dir = "R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
-                    "val_0615\\flow_stats\\obs_flows"
+                    "val_0626\\flow_stats\\obs_flows"
 sim_dir = "R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
-                    "val_0615\\flow_stats\\sim_flows"
+                    "val_0626\\flow_stats\\sim_flows"
 out_dir = "R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
-                    "val_0615\\flow_stats\\merged_flow"
+                    "val_0626\\flow_stats\\merged_flow"
 
 
 os.chdir(obs_dir)
@@ -39,7 +39,7 @@ for station in sList:
     # print(obs)
 
     os.chdir(sim_dir)
-    sim = pd.read_csv('Val_0615DetailedTS_M11.csv')
+    sim = pd.read_csv('Val_0626DetailedTS_M11.csv')
     sim['datetime'] = pd.to_datetime(sim['datetime'])
 
 
@@ -61,7 +61,7 @@ for station in sList:
     sim = sim[['datetime', station + "_sim"]]
     # print(sim)
 
-    # # convert CMS to CFS
+    # convert CMS to CFS
     # sim[station + "_sim"] = sim[station + "_sim"]*35.314666212661
 
     # use as is - if the DetailedTS is in feet/cfs
