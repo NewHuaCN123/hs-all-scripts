@@ -22,10 +22,11 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
-
+# observed file location can stay the same - avoid copying over everywhere
 dir_obs = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0720\\flow_stats\\sw_obs'
-dir_sim = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0720\\flow_stats'
-dir_table = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0720\\flow_stats'
+dir_sim = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0828\\flow_stats'
+dir_out = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0828\\flow_stats\\calculated_flows'
+dir_table = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0810\\flow_stats'
 
 
 # get simulated time series file
@@ -34,7 +35,7 @@ os.chdir(dir_sim)
 ####
 # change
 ####
-sim = pd.read_csv('BCB_071123_PD_FC9_noQimp_newstnsDetailedTS_M11.csv')
+sim = pd.read_csv('BCB-MODEL-19DetailedTS_M11.csv')
 print(sim)
 
 # get station names
@@ -52,7 +53,7 @@ stn = dat.station.unique()
 #                                 'MIL3_Q',	'Barron293_Q',	'Imperia1_Q', 'FU-6_Q']
 
 
-stn = ['COCO1_Q']
+stn = ['FU-6_Q']
 
 for ss in stn:
     print(ss)
@@ -96,13 +97,13 @@ for ss in stn:
     print(sim_dat)
     
 
-    # # original dates
-    obs = obs[(obs['datetime'] >= '2017-07-01') & (obs['datetime'] <= '2020-12-31')]
-    sim_dat = sim_dat[(sim_dat['datetime'] >= '2017-07-01') & (sim_dat['datetime'] <= '2020-12-31')]
+    # # # original dates
+    # obs = obs[(obs['datetime'] >= '2017-07-01') & (obs['datetime'] <= '2020-12-31')]
+    # sim_dat = sim_dat[(sim_dat['datetime'] >= '2017-07-01') & (sim_dat['datetime'] <= '2020-12-31')]
 
     # # when looking at a unique date
-    # obs = obs[(obs['datetime'] >= '2018-08-18') & (obs['datetime'] <= '2019-07-13')]
-    # sim_dat = sim_dat[(sim_dat['datetime'] >= '2018-08-18') & (sim_dat['datetime'] <= '2019-07-13')]
+    obs = obs[(obs['datetime'] >= '2018-08-01') & (obs['datetime'] <= '2020-12-31')]
+    sim_dat = sim_dat[(sim_dat['datetime'] >= '2018-08-01') & (sim_dat['datetime'] <= '2020-12-31')]
 
     
     obs.reset_index(inplace = True)
@@ -131,6 +132,7 @@ for ss in stn:
     obs['obs_cum_sum'] = obs['vol'].cumsum()
     print(obs)
 
+    os.chdir(dir_out)
     obs.to_csv(ss + "_BK_accumulated.csv")
 
 
