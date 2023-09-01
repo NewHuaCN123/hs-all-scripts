@@ -1,3 +1,11 @@
+"""  
+Created on Wed Aug 29 10:06:00 2022
+
+Calculate the times when flows are within 20% of observed flows
+
+@author: Michael Getachew Tadesse
+
+"""
 
 
 import os
