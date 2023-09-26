@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from mikecore.DfsFile import DataValueType
 from mikeio.eum import ItemInfo, EUMType, EUMUnit
 
-dir_scenario = "R:\\40715-021\\Modeling\\Data\\CHS_data\\New_BND_Files\\Events_tobe_Simulated"
+dir_scenario = "R:\\40715-021\\Modeling\\Data\\CHS_data\\New_BND_Files\\Events_tobe_Simulated_SHIFTED_v2"
 # dir_out = "C:\\Users\\mtadesse\\Downloads\\rainfall_analysis\\rain_10yr_25yr_100yr\\concatenated_rain\\rain_100yr"
 
 # scenarios
@@ -38,6 +38,8 @@ def convert2DFS0(scenario, savepoint, hoz_yr):
     """
     this function converts csv to dfs0
     """
+
+    print(ss, sv, hh)
 
     os.chdir(dir_scenario + "\\{}\\{}\\{}".format(scenario,savepoint,hoz_yr))
     

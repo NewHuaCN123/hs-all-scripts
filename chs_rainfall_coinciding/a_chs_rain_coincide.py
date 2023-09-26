@@ -30,7 +30,7 @@ savepoint = ['30214', '30450', '30814', '31429']
 datum = {'30214':-1.572, '30450':-1.578, '30814':-1.588, '31429':-1.565}
 
 # rainfall data
-rain = {'Scenario1':'5y_extracted.csv', 'Scenario2':'5y_extracted.csv', 
+rain = {'Scenario1':'5y_extracted.csv', 'Scenario2':'10y_extracted.csv', 
         'Scenario3':'10y_extracted.csv', 'Scenario4':'25y_extracted.csv',
         'Scenario5':'25y_extracted.csv', 'Scenario6':'100y_extracted.csv',
         'Scenario7':'100y_extracted.csv', 'Scenario8':'500y_extracted.csv'}
