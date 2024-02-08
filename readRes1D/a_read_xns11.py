@@ -47,6 +47,8 @@ branch = ['Hillsboro', 'Hillsboro Tidal', 'C-14', 'C-14 Tidal']
 special_branch = ['C-13', 'C-13 Tidal','North New River', 'North New River Tidal','C-12', 
                   'Dania Cut-Off Canal', 'SFWMD_C-11', 'SFWMD C-9']
 
+branch = ['Hillsboro']
+
 for bb in branch:
 
     q2 = xns11.QueryData('SFWMD', bb)
@@ -55,30 +57,30 @@ for bb in branch:
 
     print(q2)
     print(geometry.columns)
-    # print(geometry)
+    # # print(geometry)
 
-    dat_xns = pd.DataFrame()
+    # dat_xns = pd.DataFrame()
 
-    isFirst = True
-    for xx in geometry.columns:
-        if xx.startswith("z"):
-            print(xx.split("z SFWMD ")[1])
+    # isFirst = True
+    # for xx in geometry.columns:
+    #     if xx.startswith("z"):
+    #         print(xx.split("z SFWMD ")[1])
 
-            zDat = geometry[xx]
-            zDat = zDat[~zDat.isna()]
-            print(zDat)
+    #         zDat = geometry[xx]
+    #         zDat = zDat[~zDat.isna()]
+    #         print(zDat)
 
-            zDat_top = pd.DataFrame([xx.split("z SFWMD ")[1], zDat[0], zDat.iloc[-1]]).T
-            zDat_top.columns = ['station', 'topLeft', 'topRight']
-            print(zDat_top)
+    #         zDat_top = pd.DataFrame([xx.split("z SFWMD ")[1], zDat[0], zDat.iloc[-1]]).T
+    #         zDat_top.columns = ['station', 'topLeft', 'topRight']
+    #         print(zDat_top)
 
-            if isFirst:
-                dat_xns = zDat_top
-                isFirst = False
-            else:
-                dat_xns = pd.concat([dat_xns, zDat_top], axis = 0)
-                dat_xns.columns = ['station', 'topLeft', 'topRight']
+    #         if isFirst:
+    #             dat_xns = zDat_top
+    #             isFirst = False
+    #         else:
+    #             dat_xns = pd.concat([dat_xns, zDat_top], axis = 0)
+    #             dat_xns.columns = ['station', 'topLeft', 'topRight']
 
-    print(dat_xns)
+    # print(dat_xns)
 
-    dat_xns.to_csv(bb + ".csv")
+    # dat_xns.to_csv(bb + ".csv")
