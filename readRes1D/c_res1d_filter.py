@@ -18,21 +18,20 @@ dir_in = "R:\\40715-021\\Modeling\\Data\\PerformanceMetrics\\PM1\\ECB"
 os.chdir(dir_in)
 
 # read res1D file
-fileName = "res1d_2S10R35i.csv"
+fileName = "08-res1d_2S500R35i.csv"
 df = pd.read_csv(fileName)
 
 print(df)
-
-
 # branch name
-branch = "SFWMD_C-11"
+branch = "SFWMD C-9"
 
 dat = df[df['Water level'].str.startswith(branch)]
 
+# # Hillsboro
 # dat = dat[~dat['Water level'].str.startswith(
 #             ('Hillsboro Tidal', 'Hillsboro_AddlStorage', 'HillsboroInlet'))]
 
-
+# # C-14
 # dat = dat[~dat['Water level'].str.startswith(
 #             ('C-14 Tidal'))]
 
@@ -45,21 +44,17 @@ dat = df[df['Water level'].str.startswith(branch)]
 #                         , 'C-13_N3', 'C-13_N2', 'C-13_N1', 'C-13_Canal 9W', 'C-13_Canal 9N',
 #                         'C-13-_Canal 9', 'C-13_01', 'C-13 Tidal'))]
 
-
 # # C-12
 # dat = dat[~dat['Water level'].str.startswith(
 #             ('C-12-unincorporated', 'C-12Tidal', 'C-12_N2', 'C-12_N1'))]
 
-# # NNR
+# # North New River
 # dat = dat[~dat['Water level'].str.startswith(
 #             ('North New River Tidal'))]
 
-# SFWMD C-11
-dat = dat[~dat['Water level'].str.startswith(
-            ('SFWMD_C-11S_AddlStorage', 'SFWMD_C-11S_AddlStorage', 'SFWMD_C-11S'))]
-
-
-# print(dat)
+# # SFWMD_C-11
+# dat = dat[~dat['Water level'].str.startswith(
+#             ('SFWMD_C-11S_AddlStorage', 'SFWMD_C-11S_AddlStorage', 'SFWMD_C-11S'))]
 
 # remove duplicates
 dat = dat.drop_duplicates()
