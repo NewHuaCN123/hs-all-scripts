@@ -18,12 +18,12 @@ dir_in = "R:\\40715-021\\Modeling\\Data\\PerformanceMetrics\\PM1\\ECB"
 os.chdir(dir_in)
 
 # read res1D file
-fileName = "08-res1d_2S500R35i.csv"
+fileName = "05-res1d_20S25R35i.csv"
 df = pd.read_csv(fileName)
 
 print(df)
 # branch name
-branch = "SFWMD C-9"
+branch = "C-12Tidal"
 
 dat = df[df['Water level'].str.startswith(branch)]
 

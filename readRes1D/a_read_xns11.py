@@ -20,8 +20,8 @@ from mikeio1d.res1d import Res1D, QueryDataReach
 from mikeio1d import xns11
 
 
-dir_in = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents"
-dir_out = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents"
+dir_in = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Section216\\Data"
+dir_out = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Section216\\Data"
 
 os.chdir(dir_in)
 
@@ -47,40 +47,40 @@ branch = ['Hillsboro', 'Hillsboro Tidal', 'C-14', 'C-14 Tidal']
 special_branch = ['C-13', 'C-13 Tidal','North New River', 'North New River Tidal','C-12', 
                   'Dania Cut-Off Canal', 'SFWMD_C-11', 'SFWMD C-9']
 
-branch = ['Hillsboro']
+branch = ['C-12Tidal']
 
 for bb in branch:
 
-    q2 = xns11.QueryData('SFWMD', bb)
+    q2 = xns11.QueryData('TAYLOR', bb)
 
     geometry = xns11.read('Broward_ResiliencyPlan_Scenarios.xns11', q2)
 
-    print(q2)
-    print(geometry.columns)
-    # # print(geometry)
+    # print(q2)
+    # print(geometry.columns)
+    # print(geometry)
 
-    # dat_xns = pd.DataFrame()
+    dat_xns = pd.DataFrame()
 
-    # isFirst = True
-    # for xx in geometry.columns:
-    #     if xx.startswith("z"):
-    #         print(xx.split("z SFWMD ")[1])
+    isFirst = True
+    for xx in geometry.columns:
+        if xx.startswith("z"):
+            # print(xx.split("z TAYLOR ")[1])
 
-    #         zDat = geometry[xx]
-    #         zDat = zDat[~zDat.isna()]
-    #         print(zDat)
+            zDat = geometry[xx]
+            zDat = zDat[~zDat.isna()]
+            # print(zDat)
 
-    #         zDat_top = pd.DataFrame([xx.split("z SFWMD ")[1], zDat[0], zDat.iloc[-1]]).T
-    #         zDat_top.columns = ['station', 'topLeft', 'topRight']
-    #         print(zDat_top)
+            zDat_top = pd.DataFrame([xx.split("z TAYLOR ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
+            zDat_top.columns = ['station', 'topLeft', 'topRight']
+            # print(zDat_top)
 
-    #         if isFirst:
-    #             dat_xns = zDat_top
-    #             isFirst = False
-    #         else:
-    #             dat_xns = pd.concat([dat_xns, zDat_top], axis = 0)
-    #             dat_xns.columns = ['station', 'topLeft', 'topRight']
+            if isFirst:
+                dat_xns = zDat_top
+                isFirst = False
+            else:
+                dat_xns = pd.concat([dat_xns, zDat_top], axis = 0)
+                dat_xns.columns = ['station', 'topLeft', 'topRight']
 
-    # print(dat_xns)
+    print(dat_xns)
 
-    # dat_xns.to_csv(bb + ".csv")
+    dat_xns.to_csv(bb + ".csv")
