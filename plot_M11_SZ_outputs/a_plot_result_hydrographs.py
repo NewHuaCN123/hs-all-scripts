@@ -17,15 +17,15 @@ from scipy.interpolate import make_interp_spline
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
 
-dir_in = "R:\\40715-021\\QAQC\\model_results_comparison\\exported_result_files"
-dir_out = "R:\\40715-021\\QAQC\\model_results_comparison\\exported_result_files\\figures"
+dir_in = "R:\\40715-021\\QAQC\\model_results_comparison\\100623"
+dir_out = "R:\\40715-021\\QAQC\\model_results_comparison\\100623\\figures"
 
 
 variable = "stage"
 
 
 os.chdir(dir_in)
-dat = pd.read_csv("100S100R85i_v3_{}.csv".format(variable))
+dat = pd.read_csv("100S100R85i_v3DetailedTS_M11_{}.csv".format(variable))
 dat['Time'] = pd.to_datetime(dat['Time'])
 
 
@@ -57,6 +57,8 @@ c14 = ['S-38_Q', 'S-38A_Q','S-38C_Q', 'S-37B_Q', 'G-57_Q', 'S-37A_Q']
 test1 = ['G-54_Q', 'S-34_Q','S-33_Q', 'S-36_Q']
 test2 = ['G-86N Q', 'C-11 Impoundment Inflow','Conceptual 3 Q', 'Conceptual 4 Q', 'S-13_Pump&Spillway_Q']
 
+test3 = ['G-54_HW', 'G-54_TW']
+
 # plotting
 
 
@@ -74,7 +76,7 @@ def plotByWatershed(dat, watershed):
         plt.gca().xaxis.set_major_formatter(dtFmt) # apply the format to the desired axis
 
         if variable != 'flow':
-            plt.ylabel('Stage NAVD88 [ft]')
+            plt.ylabel('Stage NGVD29 [ft]')
         else:
             plt.ylabel('Discharge [cfs]')
 
@@ -98,7 +100,7 @@ def plotAll(stn, variable, dir_out):
         plt.gca().xaxis.set_major_formatter(dtFmt) # apply the format to the desired axis
 
         if variable != 'flow':
-            plt.ylabel('Stage NAVD88 [ft]')
+            plt.ylabel('Stage NGVD29 [ft]')
         else:
             plt.ylabel('Discharge [cfs]')
 
@@ -115,5 +117,6 @@ def plotAll(stn, variable, dir_out):
 
 
 
-# plotByWatershed(dat, hilsboro)
-plotAll(stn_stage, variable, dir_out)
+# # plotByWatershed(dat, hilsboro)
+# plotAll(stn_stage, variable, dir_out)
+plotByWatershed(dat, test3)

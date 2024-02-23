@@ -24,6 +24,11 @@ os.chdir("C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents\\UKBFPLOS"
 obs = pd.read_csv("S65_obs.csv")
 sim = pd.read_csv("S65_simulated.csv")
 sim_go = pd.read_csv('S65_simulated_HW_TW_GO.csv')
+obs_go = pd.read_csv('s65_combined_hw_tw_go.csv')
+obs_go['datetime'] = pd.to_datetime(obs_go['datetime'])
+
+obs_go = obs_go[(obs_go['datetime'] >= '2017-01-01') & (obs_go['datetime'] <= '2017-12-31')]
+
 
 print(obs)
 print(sim)
@@ -57,10 +62,22 @@ print(sim)
 fig = plt.figure(figsize=(12,12))
 ax = fig.add_subplot(111, projection='3d')
 # # Plot a 3D surface
-ax.scatter(sim_go['HW_ft'], sim_go['TW_ft'], sim_go['GO_ft'], c= "brown")
+ax.scatter(sim_go['HW_ft'], sim_go['TW_ft'], sim_go['GO_ft'], c= "#458B00")
 ax.set_xlabel('HW_ft', labelpad=20)
 ax.set_ylabel('TW_ft', labelpad=20)
 ax.set_zlabel('GO_ft', labelpad=20)
 ax.set_title('S65 - Simulated Stages + Gate Opening')
 
+plt.show()
+
+
+# simulated - gate opening
+fig = plt.figure(figsize=(12,12))
+ax = fig.add_subplot(111, projection='3d')
+# # Plot a 3D surface
+ax.scatter(obs_go['HW_ft'], obs_go['TW_ft'], obs_go['GO_ft'], c= "#6495ED")
+ax.set_xlabel('HW_ft', labelpad=20)
+ax.set_ylabel('TW_ft', labelpad=20)
+ax.set_zlabel('GO_ft', labelpad=20)
+ax.set_title('S65 - Observed Stages + Gate Opening')
 plt.show()

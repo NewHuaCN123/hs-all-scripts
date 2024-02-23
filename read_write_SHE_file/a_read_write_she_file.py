@@ -18,18 +18,18 @@ os.chdir("C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Pl
 print(os.listdir())
 
 # read original SHE file
-dat = open("Broward_VA1.she", 'r+')
+dat = open("Broward_VA10_AS_original.she", 'r+')
 
 lines = dat.readlines()
 
 # write new lines to a new SHE file
-with open('test.she', 'w', encoding='utf-8') as file:  
+with open('Broward_VA10_AS.she', 'w', encoding='utf-8') as file:  
     for txt in lines:
         print(txt)
             
-        if "Meteorologic\\10y\\1" in txt:
+        if "Meteorologic\\100y_0901\\1" in txt:
             # print(txt)
-            txt = txt.replace('Meteorologic\\10y\\1', 'Meteorologic\\25y\\1')
+            txt = txt.replace('Meteorologic\\100y_0901\\1', 'Meteorologic\\10y_0901\\1')
             # print(txt)
             
         file.writelines(txt)

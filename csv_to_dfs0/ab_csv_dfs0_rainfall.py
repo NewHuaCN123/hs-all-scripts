@@ -21,8 +21,10 @@ import mikeio
 from mikeio.eum import ItemInfo, EUMType, EUMUnit
 from mikecore.DfsFile import DataValueType
 
-dir_in = "R:\\40715-021\\Modeling\\Data\\rainfall\\100923\\rain_500yr"
-dir_out = "R:\\40715-021\\Modeling\\Data\\rainfall\\100923\\rain_500yr"
+dir_in = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents\\ams_rainfall_analysis"\
+                "\\concatenated_clean"
+dir_out = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents\\"\
+                "ams_rainfall_analysis\\concatenated_clean"
 
 
 
@@ -30,7 +32,7 @@ os.chdir(dir_in)
 
 pixList = os.listdir()
 
-pixList = ['Rain_500y_extended.csv']
+pixList = ['500y_ams_arf_mean.csv']
 
 for pp in pixList:
     print(pp)
@@ -47,5 +49,5 @@ for pp in pixList:
 
     os.chdir(dir_out)
 
-    df.to_dfs0("Rain_500y_extended.dfs0", EUMType.Rainfall, EUMUnit.inch)
+    df.to_dfs0("500y_ams_arf_mean.dfs0", EUMType.Rainfall, EUMUnit.inch)
     

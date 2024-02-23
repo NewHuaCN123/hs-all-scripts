@@ -12,21 +12,22 @@ import os
 import datetime
 import pandas as pd
 
-dir_in = "R:\\40715-021\\Modeling\\Data\\PerformanceMetrics\\PM1\\ECB"
+dir_in = "R:\\40715-021\\Modeling\\Data\\PerformanceMetrics\\PM1\\FWOP"
 
 
 os.chdir(dir_in)
 
 # read res1D file
-fileName = "05-res1d_20S25R35i.csv"
+fileName = "08-res1d_2S500R85i.csv"
 df = pd.read_csv(fileName)
 
 print(df)
 # branch name
-branch = "C-12Tidal"
+branch = "Dania Cut-Off Canal"
 
 dat = df[df['Water level'].str.startswith(branch)]
 
+{
 # # Hillsboro
 # dat = dat[~dat['Water level'].str.startswith(
 #             ('Hillsboro Tidal', 'Hillsboro_AddlStorage', 'HillsboroInlet'))]
@@ -55,6 +56,9 @@ dat = df[df['Water level'].str.startswith(branch)]
 # # SFWMD_C-11
 # dat = dat[~dat['Water level'].str.startswith(
 #             ('SFWMD_C-11S_AddlStorage', 'SFWMD_C-11S_AddlStorage', 'SFWMD_C-11S'))]
+
+
+}
 
 # remove duplicates
 dat = dat.drop_duplicates()

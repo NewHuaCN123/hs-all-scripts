@@ -17,13 +17,13 @@ import matplotlib.pyplot as plt
 
 
 obs_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\obs_flows'
-sim_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\sim_flows\\0831_Model19'
+sim_dir = 'R:\\40715-010\\Data\\calibration_stats\\flow_stats\\sim_flows\\0912'
 out_dir = 'R:\\40715-010\\Data\\calibration_stats\\bcb_stat_summary\\0828\\flow_stats\\sw_obs'
 
 
 os.chdir(obs_dir)
 
-station = "barron293"
+station = "mil3"
 obs = pd.read_csv('{}.csv'.format(station))
 # print(obs)
 obs['datetime'] = pd.to_datetime(obs['datetime'])
@@ -31,7 +31,7 @@ obs['datetime'] = pd.to_datetime(obs['datetime'])
 print(obs)
 
 os.chdir(sim_dir)
-sim = pd.read_csv('BCB-MODEL-19DetailedTS_M11.csv')
+sim = pd.read_csv('BCB_MODEL30.csv')
 print(sim)
 sim['datetime'] = pd.to_datetime(sim['datetime'])
 

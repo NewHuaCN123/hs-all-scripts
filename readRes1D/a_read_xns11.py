@@ -41,17 +41,17 @@ os.chdir(dir_in)
 # df = Res1D.read(query)
 
 
-# read xns11 file
-branch = ['Hillsboro', 'Hillsboro Tidal', 'C-14', 'C-14 Tidal']
+# # read xns11 file
+# branch = ['Hillsboro', 'Hillsboro Tidal', 'C-14', 'C-14 Tidal']
 
-special_branch = ['C-13', 'C-13 Tidal','North New River', 'North New River Tidal','C-12', 
-                  'Dania Cut-Off Canal', 'SFWMD_C-11', 'SFWMD C-9']
+# special_branch = ['C-13', 'C-13 Tidal','North New River', 'North New River Tidal','C-12', 
+#                   'Dania Cut-Off Canal', 'SFWMD_C-11', 'SFWMD C-9']
 
-branch = ['C-12Tidal']
+branch = ['DANIA CUT-OFF CANAL']
 
 for bb in branch:
 
-    q2 = xns11.QueryData('TAYLOR', bb)
+    q2 = xns11.QueryData('AECOM', bb)
 
     geometry = xns11.read('Broward_ResiliencyPlan_Scenarios.xns11', q2)
 
@@ -70,7 +70,7 @@ for bb in branch:
             zDat = zDat[~zDat.isna()]
             # print(zDat)
 
-            zDat_top = pd.DataFrame([xx.split("z TAYLOR ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
+            zDat_top = pd.DataFrame([xx.split("z AECOM ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
             zDat_top.columns = ['station', 'topLeft', 'topRight']
             # print(zDat_top)
 
