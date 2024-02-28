@@ -25,6 +25,7 @@ dir_out = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Section216\\Data"
 
 os.chdir(dir_in)
 
+{
 
 # # read res1D file
 # df = Res1D("100S100R85i.res1d").read()
@@ -46,12 +47,14 @@ os.chdir(dir_in)
 
 # special_branch = ['C-13', 'C-13 Tidal','North New River', 'North New River Tidal','C-12', 
 #                   'Dania Cut-Off Canal', 'SFWMD_C-11', 'SFWMD C-9']
+}
 
-branch = ['DANIA CUT-OFF CANAL']
+
+branch = ['CYPRESS_CREEK']
 
 for bb in branch:
 
-    q2 = xns11.QueryData('AECOM', bb)
+    q2 = xns11.QueryData('SFWMD', bb)
 
     geometry = xns11.read('Broward_ResiliencyPlan_Scenarios.xns11', q2)
 
@@ -70,7 +73,7 @@ for bb in branch:
             zDat = zDat[~zDat.isna()]
             # print(zDat)
 
-            zDat_top = pd.DataFrame([xx.split("z AECOM ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
+            zDat_top = pd.DataFrame([xx.split("z SFWMD ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
             zDat_top.columns = ['station', 'topLeft', 'topRight']
             # print(zDat_top)
 
