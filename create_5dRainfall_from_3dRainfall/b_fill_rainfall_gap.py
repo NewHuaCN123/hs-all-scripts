@@ -15,9 +15,9 @@ import matplotlib.pyplot as plt
 from mikeio.eum import ItemInfo, EUMType, EUMUnit
 from mikecore.DfsFile import DataValueType
 
-dir_obs = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\AdaptationStrategyRuns\\rainfall_data\\100y'
-dir_out_csv = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\AdaptationStrategyRuns\\rainfall_data\\100y_0901_csv'
-dir_out_dfs0 = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\AdaptationStrategyRuns\\rainfall_data\\100y_0901_dfs0'
+dir_obs = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\AdaptationStrategyRuns\\rainfall_data\\100y_5d_dfs0'
+dir_out_csv = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\AdaptationStrategyRuns\\rainfall_data\\100y_5d_0901_csv'
+dir_out_dfs0 = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\AdaptationStrategyRuns\\rainfall_data\\100y_5d_0901_dfs0'
 
 
 
@@ -45,12 +45,12 @@ for nex in nexList:
     df.columns = ['datetime', "rainfall_in"]
 
     # print(df)
-    df = df[df['datetime'] >= "2017-09-08 02:15:00"]
+    df = df[df['datetime'] >= "2017-09-06 02:00:00"]
     # print(df)
 
     # generate new empty time series between 09/06 02:00 and 09/08 02:00
     dat = pd.DataFrame(pd.date_range(start="2017-09-01 00:00:00",
-                                         end='2017-09-08 00:00:00', freq="24H"), 
+                                         end='2017-09-06 01:45:00', freq="24H"), 
                                             columns = ['datetime'])
     # print(dat)
 
