@@ -71,7 +71,6 @@ def add_used_filled(dat):
 def mon_aggregate(dat):
     dat.set_index("DATE", inplace = True)
     dat_agg = dat.groupby(pd.Grouper(freq = "M"))[['daily_used', 'daily_filled']].sum()
-    # [['daily_used', 'daily_filled']].sum()
     dat_agg.reset_index(inplace = True)
 
     dat_agg.columns = ['DATE', 'monthly_used', 'monthly_filled']
@@ -82,9 +81,34 @@ def mon_aggregate(dat):
 
     print(dat_agg.iloc[30:40,:])
 
-## input parameters
-SO_account = 1
+    dat_agg.to_csv("processed_mon_"+filename)
 
-dat = get_data("data_v1.96_1FF.csv")
+# aggregate annualy
+def ann_aggregate(dat):
+    # dat has index set already in the previous function
+    dat_agg = dat.groupby(pd.Grouper(freq = "Y"))[['daily_used', 'daily_filled']].sum()
+    dat_agg.reset_index(inplace = True)
+
+    dat_agg.columns = ['DATE', 'annually_used', 'annually_filled']
+
+    # get the year only
+    dat_agg['DATE'] = pd.DatetimeIndex(dat_agg['DATE']).year
+
+    # add percent used + percent filled
+    dat_agg['percent_used'] = 100*dat_agg['annually_used']/SO_account
+    dat_agg['percent_filled'] = 100*dat_agg['annually_filled']/SO_account
+
+    print(dat_agg.iloc[30:40,:])
+
+    dat_agg.to_csv("processed_ann_"+filename)
+
+## input parameters
+SO_account = 2
+filename = "data_1.96_2FF.csv"
+
+## run scripts
+dat = get_data(filename)
 dat_used_filled = add_used_filled(dat)
+
 dat_mon_agg = mon_aggregate(dat_used_filled)
+dat_ann_agg = ann_aggregate(dat_used_filled)
