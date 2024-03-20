@@ -44,8 +44,8 @@ def plot_hydrograh(filename):
     plt.plot(dat['Date'], dat['Gage Height (feet)'], c = "red")
     plt.ylabel('Gage Height (feet)')
     plt.title(site_id)
-    plt.grid(True)  # Add grid lines
-    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+    plt.grid(which='both', linestyle='--', alpha=0.5)  # Add grid lines
+    # plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
     plt.tight_layout()  # Adjust layout to prevent clipping of labels
     plt.show()
 
