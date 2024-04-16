@@ -50,11 +50,11 @@ os.chdir(dir_in)
 }
 
 
-branch = ['CYPRESS_CREEK']
+branch = ['DANIA CUT-OFF CANAL']
 
 for bb in branch:
 
-    q2 = xns11.QueryData('SFWMD', bb)
+    q2 = xns11.QueryData('AECOM', bb)
 
     geometry = xns11.read('Broward_ResiliencyPlan_Scenarios.xns11', q2)
 
@@ -73,7 +73,7 @@ for bb in branch:
             zDat = zDat[~zDat.isna()]
             # print(zDat)
 
-            zDat_top = pd.DataFrame([xx.split("z SFWMD ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
+            zDat_top = pd.DataFrame([xx.split("z AECOM ")[1], zDat[0]/0.3048, zDat.iloc[-1]/0.3048]).T
             zDat_top.columns = ['station', 'topLeft', 'topRight']
             # print(zDat_top)
 

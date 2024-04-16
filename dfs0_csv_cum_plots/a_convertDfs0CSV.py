@@ -14,22 +14,20 @@ import mikeio
 import os 
 
 
-dir_obs = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Broward-Watershed-Plan\\Data'
+dir_obs = 'C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Section216\\Postprocessing\\M11_scenarios_3_5'
 
-# dir_table = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\cal_0608_v13\\plots_4_report'
+# dir_table = 'R:\\40715-013 UKFPLOS\\Data\\H&H_Data\\calibration_validation_stats\\"\
+    # "cal_0608_v13\\plots_4_report'
 
 
 os.chdir(dir_obs)
 fileList = os.listdir()
 
 
-# os.chdir(dir_table)
-# dat = pd.read_csv('SW_storing.csv')
-# stn = dat.station.unique()
-# print(dat)
-# print(stn)
+# stn = ['10044502.dfs0']
 
-stn = ['10044502.dfs0']
+stn = fileList.copy()
+
 
 for ss in stn:
     print(ss)
@@ -52,7 +50,18 @@ for ss in stn:
     df.reset_index(inplace = True)
     # df.columns = ['datetime', 'value']
 
-    print(df)
+    # print(df.columns)
+
+    df = df[['index', 'G-56_HW', 'G-56_TW','G-56_Q',
+             'S-37B_HW','S-37B_TW','S-37B_Q',
+             'S-37A_HW', 'S-37A_TW','S-37A_Q',
+             'G-57_HW','G-57_TW', 'G-57_Q',
+             'S-36_HW', 'S-36_TW','S-36_Q',
+             'S-33_HW', 'S-33_TW', 'S-33_Q',
+             'G-54_HW', 'G-54_TW', 'G-54_Q',
+             'S-13_Pump_HW', 'S-13_Pump_TW','S-13_Pump&Spillway_Q'
+             ]]
+
 
     saveName = stnFile.split('.dfs0')[0] + ".csv"
 

@@ -35,15 +35,22 @@ dat['DATE'] = pd.to_datetime(dat['DATE'])
 dat['year'] = pd.DatetimeIndex(dat['DATE']).year
 dat['DATE'] = pd.to_datetime(dat['DATE']).dt.strftime('%b-%Y')
 dat['mon'] = pd.to_datetime(dat['DATE']).dt.strftime('%b')
-dat_mjjaso = dat[dat['DATE'].str.startswith(tuple(['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']))]
+dat_mjjaso = dat[dat['DATE'].str.startswith
+                 (tuple(['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']))]
 
 # print(dat)
 print(dat_mjjaso)
 
 # pivot table
 pivoted = pd.pivot_table(dat_mjjaso, index = ['year'], columns = 'mon', 
-                    values = ['monthly_used', 'monthly_filled', 'percent_used', 'percent_filled'], 
+                    values = ['monthly_used', 
+                              'monthly_filled', 'percent_used', 'percent_filled'], 
                     sort = False)
+print(pivoted)
+
+# print(pivoted.loc[:, ('monthly_used')])
+pivoted['total_used'] = pivoted.loc[:, ('monthly_used')].sum(axis = 1)
+pivoted['total_filled'] = pivoted.loc[:, ('monthly_filled')].sum(axis = 1)
 print(pivoted)
 
 # save data

@@ -20,24 +20,27 @@ from mikeio1d.res1d import Res1D, QueryDataReach
 from mikeio1d import xns11
 
 
-dir_in = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents"
-dir_out = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Documents"
+dir_in = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Section216\\Postprocessing"
+dir_out = "C:\\Users\\mtadesse\\OneDrive - Hazen and Sawyer\\Section216\\Postprocessing"
 
 os.chdir(dir_in)
 
 
 # read res1D file
-df = Res1D("100S100R85i.res1d").read()
+filename = "20S25R35i.res1d"
+df = Res1D(filename).read()
 
 print(df)
 print(df.columns)
 
-# # dat = pd.DataFrame(df.columns)
-# # print(dat)
+df.to_csv(filename + ".csv")
 
-# # dat.to_csv("res1D_columns_v2.csv")
+# # # dat = pd.DataFrame(df.columns)
+# # # print(dat)
 
-query = QueryDataReach("WaterLevel", "1L2W", 3000)
-df = Res1D.read(query)
+# # # dat.to_csv("res1D_columns_v2.csv")
 
-print(df)
+# query = QueryDataReach("WaterLevel", "1L2W", 3000)
+# df = Res1D.read(query)
+
+# print(df)
