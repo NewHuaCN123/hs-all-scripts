@@ -25,12 +25,12 @@ print(dat)
 # filter dataframe with so_exhausted == 1
 dat_100 = dat[dat['so_exhausted_100kcfs'] == 1]
 dat_120 = dat[dat['so_exhausted_120kcfs'] == 1]
-# dat_140 = dat[dat['so_exhausted_140kcfs'] == 1]
+dat_140 = dat[dat['so_exhausted_140kcfs'] == 1]
 
 # pick the first rows of this dataframe
 dat_100.reset_index(inplace = True)
 dat_120.reset_index(inplace = True)
-# dat_140.reset_index(inplace = True)
+dat_140.reset_index(inplace = True)
 
 unique_yr = dat_100['year'].unique()
 print(unique_yr)
@@ -95,42 +95,43 @@ for yy in unique_yr:
 
 dat_120_so.reset_index(inplace = True)
 
-# # 140kcfs
-# fname = dat_140
-# isFirst = True
-# for yy in unique_yr:
-#     new_dat = fname[(fname['year'] == yy) & fname["so_exhausted_140kcfs"] == 1]
-#     new_dat.reset_index(inplace = True)
-#     # print(new_dat)
+# 140kcfs
+fname = dat_140
+isFirst = True
+for yy in unique_yr:
+    new_dat = fname[(fname['year'] == yy) & fname["so_exhausted_140kcfs"] == 1]
+    new_dat.reset_index(inplace = True)
+    # print(new_dat)
 
-#     # print(str(pd.Timestamp(str((new_dat.iloc[0,2]))).month) + "-datetime")
-#     # print(pd.Timestamp(str((new_dat.iloc[0,2]))).timetuple().tm_yday)
+    # print(str(pd.Timestamp(str((new_dat.iloc[0,2]))).month) + "-datetime")
+    # print(pd.Timestamp(str((new_dat.iloc[0,2]))).timetuple().tm_yday)
 
-#     day_year = pd.Timestamp(str((new_dat.iloc[0,2]))).timetuple().tm_yday
+    day_year = pd.Timestamp(str((new_dat.iloc[0,2]))).timetuple().tm_yday
 
-#     df = pd.DataFrame([yy, 
-#             str(pd.Timestamp(str((new_dat.iloc[0,2]))).month) + "/"+
-#                   str(pd.Timestamp(str((new_dat.iloc[0,2]))).day), day_year]).T
+    df = pd.DataFrame([yy, 
+            str(pd.Timestamp(str((new_dat.iloc[0,2]))).month) + "/"+
+                  str(pd.Timestamp(str((new_dat.iloc[0,2]))).day), day_year]).T
 
-#     df.columns = ['year', 'so_exhausted', 'day_year']
+    df.columns = ['year', 'so_exhausted', 'day_year']
     
 
-#     if isFirst:
-#         dat_140_so = df
-#         isFirst = False
-#     else:
-#         dat_140_so = pd.concat([dat_140_so, df])
+    if isFirst:
+        dat_140_so = df
+        isFirst = False
+    else:
+        dat_140_so = pd.concat([dat_140_so, df])
 
-# dat_140_so.reset_index(inplace = True)
+dat_140_so.reset_index(inplace = True)
 
 print(dat_100_so)
 print(dat_120_so)
-# print(dat_140_so)
+print(dat_140_so)
 
 
 
 # # plot
 plt.figure(figsize = (18,6))
+plt.rcParams.update({'font.size': 12})
 plt.grid()
 
 # plt.scatter(dat_100_so['year'], dat_100_so['day_year'], 
@@ -143,7 +144,7 @@ sns.regplot(data=dat_100_so, x="year", y="day_year", fit_reg=False,
 for line in range(0,dat_100_so.shape[0]):
      plt.text(dat_100_so.year[line], dat_100_so.day_year[line]+3, 
               dat_100_so.so_exhausted[line], 
-                verticalalignment='bottom', size='small', color='blue', weight='semibold')
+                verticalalignment='bottom', size='x-small', color='blue', weight='semibold')
 
 # 120kcfs
 sns.regplot(data=dat_120_so, x="year", y="day_year", fit_reg=False, 
@@ -151,14 +152,26 @@ sns.regplot(data=dat_120_so, x="year", y="day_year", fit_reg=False,
 
 # add annotations one by one with a loop
 for line in range(0,dat_120_so.shape[0]):
-     plt.text(dat_120_so.year[line], dat_120_so.day_year[line]-15, 
+     plt.text(dat_120_so.year[line], dat_120_so.day_year[line]-10, 
               dat_120_so.so_exhausted[line], 
-                verticalalignment='bottom', size='small', color='red', weight='semibold')
+                verticalalignment='bottom', size='x-small', color='red', weight='semibold')
+# 140kcfs
+sns.regplot(data=dat_120_so, x="year", y="day_year", fit_reg=False, 
+            marker="x", color="darkslategray", scatter_kws={'s':75}, label = "FxnFlow = 140kcfs")
+
+# add annotations one by one with a loop
+for line in range(0,dat_140_so.shape[0]):
+     plt.text(dat_140_so.year[line], dat_140_so.day_year[line]-15, 
+              dat_140_so.so_exhausted[line], 
+                verticalalignment='bottom', size='x-small', color='darkslategray', weight='semibold')
 
 
-# plt.plot(dat['datetime'], dat['so_exhausted_120kcfs'], c = "red", label = "SO_Exhausted = 120kcfs")
 
 plt.xticks(np.arange(dat_100_so['year'].min(), dat_100_so['year'].max(), 3)) 
 plt.ylabel('Day of Year when SO is Exhausted')
-plt.legend()
+plt.title("Functional Flow Sensitivity Analysis")
+plt.ylim([150,366])
+plt.legend(ncol = 3)
+plt.savefig("FxnFlow_Sensitivity_Analysis", dpi = 400)
 plt.show()
+

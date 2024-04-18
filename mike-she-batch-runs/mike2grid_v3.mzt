@@ -1,0 +1,492 @@
+// Created     : 2024-04-18 8:32:41
+// DLL         : C:\Program Files (x86)\DHI\MIKE Zero\2022\bin\x64\pfs2004.dll
+// Version     : 20.1.0.16132
+
+[mztxstat]
+   CLSID = 'TxStat.dll'
+   TypeName = 'mztxstat'
+   CREATEDTIME = '2024-04-18T08:31:53'
+   MODIFIEDTIME = '2024-04-18T08:31:53'
+   NOTES = ''
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S5R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S5R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S5R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S5R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S5R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S5R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S5R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S5R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S10R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S10R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S10R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S10R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S10R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S10R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S10R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S10R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S25R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S25R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S25R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S25R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S25R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S25R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S25R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S25R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S100R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S100R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S100R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S100R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S100R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S100R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S100R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S100R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S500R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S500R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S500R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S500R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S500R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S500R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\2S500R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\2S500R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\10S10R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\10S10R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\10S10R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\10S10R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\10S10R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\10S10R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\10S10R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\10S10R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\20S25R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\20S25R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\20S25R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\20S25R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\20S25R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\20S25R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\20S25R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\20S25R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\100S100R35i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\100S100R35i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\100S100R85h_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\100S100R85h_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\100S100R85i_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\100S100R85i_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+   [Setup]
+      Name = 'Setup Name'
+      DimensionOfTool = 2
+      InputFileName = |.\rawFiles\100S100R85l_overland.dfs2|
+      Items = 1
+      FirstTimeStep = 22
+      LastTimeStep = 598
+      GridLimits = 0, 0, 594, 834
+      Statistics = 5
+      IncludeMissingValues = 1
+      Threshold = 0.25
+      OutputFileName = |.\floodDurationDfs2\100S100R85l_overland.dfs2|
+      OutputTitle = ''
+   EndSect  // Setup
+
+EndSect  // mztxstat
